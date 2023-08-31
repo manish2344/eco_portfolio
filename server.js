@@ -5,7 +5,6 @@ require('./connection.js')
 const mongoose = require("mongoose");
 const userRoute = require("./Routes/userRoute");
 const productRouter = require("./Controllers/Product.js");
-const blogRouter = require("./Controllers/blogController.js");
 const cookieParser = require('cookie-parser');
 const app = express();
 
@@ -15,7 +14,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
 app.use("/api/user", userRoute);
-// app.use("/api/blog", blogRouter);
 app.use("/api/product", productRouter);
 app.get('/',(req,res)=>{
 res.send('manish kumar panwar')

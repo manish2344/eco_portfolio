@@ -23,7 +23,7 @@ productController.post("/create",verifyToken, upload.single("image"),async (req,
         category: req.body.category,
         avatar: result.secure_url,
         cloudinary_id: result.public_id,
-       
+        
       });
       await user.save();
       res.json(user);
@@ -41,6 +41,16 @@ productController.get('/find/:id', async (req, res) => {
         return res.status(200).json(product)
     } catch (error) {
         return res.status(500).json(error)
+    }
+})
+
+productController.put("/updateproduct/:id", verifyToken, async (req, res) => {
+    try {
+        const updatedProduct = await Product.findByIdAndUpdate(req.params.id,  req.body , { new: true })
+        
+        res.send(updatedProduct)
+    } catch (error) {
+        return res.status(500).json(error.message)
     }
 })
 
