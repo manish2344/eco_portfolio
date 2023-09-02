@@ -16,7 +16,7 @@ app.use(express.json());
 app.use("/api/user", userRoute);
 app.use("/api/product", productRouter);
 app.get('/',(req,res)=>{
-res.send('manish kumar panwar')
+res.send('welcome manish page')
 })
 
 app.listen(process.env.PORT, () => {
